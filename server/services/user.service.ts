@@ -1,6 +1,8 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { redis } from "../utils/redis";
 import userModel from "../models/user.model";
+import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import ErrorHandler from "../utils/ErrorHandler";
 
 // get user by id
 export const getUserById = async (id: string, res: Response) => {
@@ -34,3 +36,6 @@ export const updateUserRoleService = async (res:Response,id: string,role:string)
     user,
   });
 }
+
+
+

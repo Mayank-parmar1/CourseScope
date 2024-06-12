@@ -7,15 +7,21 @@ import userRouter from './routes/user.routes'
 import orderRouter from './routes/order.route'
 import courseRouter from './routes/course.route'
 import notificationRoute from './routes/notification.route'
+import analyticsRouter from "./routes/analytics.route";
+import layoutRouter from "./routes/layout.route";
 require('dotenv').config();
 
 app.use(express.json({limit:"50mb"}));
+// routes
 app.use(
     "/api/v1",
     userRouter,
     orderRouter,
     courseRouter,
-    notificationRoute,);
+    notificationRoute,
+    analyticsRouter,
+    layoutRouter
+  );
 
 app.use(cookieParser());
 app.use(ErrorMiddleware);

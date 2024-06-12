@@ -6,11 +6,10 @@ import {
 //   addQuestion,
 //   addReplyToReview,
 //   addReview,
-//   deleteCourse,
+  deleteCourse,
 //   editCourse,
 //   generateVideoUrl,
 //   getAdminAllCourses,
-//   getAllCourses,
   getCourseByUser,
 //   getSingleCourse,
   uploadCourse,
@@ -18,8 +17,10 @@ import {
   addAnwser,
   addReview,
   addReplyToReview,
+  getAllCourses,
 } from "../controllers/course.controller";
 import { authorizeRoles, isAutheticated } from "../middleware/auth";
+import { getAllOrders } from "../controllers/order.controller";
 const courseRouter = express.Router();
 
 
@@ -42,12 +43,21 @@ courseRouter.post(
 
 courseRouter.put("/add-answer", isAutheticated, addAnwser);
 courseRouter.put("/add-review/:id", isAutheticated, addReview);
-
+courseRouter.get("/get-courses", getAllCourses);
 courseRouter.put(
   "/add-reply",
   isAutheticated,
   authorizeRoles("admin"),
   addReplyToReview  
+);
+
+courseRouter.get("/get-courses", getAllCourses);
+
+courseRouter.delete(
+  "/delete-course/:id",
+  isAutheticated,
+  authorizeRoles("admin"),
+  deleteCourse
 );
 
 
