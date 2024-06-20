@@ -1,7 +1,7 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "./fearures/API/ApiSlice";
-import authSlice from "./fearures/auth/AuthSlice";
+import { apiSlice } from "./features/API/ApiSlice";
+import authSlice from "./features/auth/AuthSlice";
 
 export const store = configureStore({
   reducer: {
